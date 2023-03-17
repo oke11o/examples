@@ -29,11 +29,11 @@ func (s *serviceWithRace) run() {
 }
 
 func (s *serviceWithRace) get() string {
-	return *s.d[rand.Intn(s.n)]
+	v := s.d[rand.Intn(s.n)]
+	return *v
 }
 
 func (s *serviceWithRace) update() {
-	//fmt.Println("update")
 	for _, v := range s.d {
 		newVal := strconv.Itoa(rand.Int())
 		*v = newVal
